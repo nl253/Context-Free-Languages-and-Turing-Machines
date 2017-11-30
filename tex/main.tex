@@ -63,31 +63,131 @@
 
 \topic{Context Free Grammars}
 
-\question{}
+\question{1. Consider the language}
 
-\answer{%
-	---
-}
+\begin{enumerate}		
+
+	\item Give a word that is in the language and a word that is not in the language
+
+		\answer{%
+			not in the language: kkk \\
+			in the language: 		 aabbbbcc
+		}
+
+	\item Give a context-free grammar for the language above.
+
+		\answer{%
+			---
+		}
+
+	\item Use the Cocke-Younger-Kasami algorithm to determine whether abbaa is a word
+		of the language of the following grammar. Give the table. State in one sentence
+		whether the word is a word of the language of the grammar and how you obtain
+		this conclusion from the table.
+
+		\answer{%
+
+			\begin{center}
+				\begin{tabular}{ |l|c|c|c|c|c| } 
+					\hline
+					5 & x & --- & --- & --- & --- \\
+					4 & x & x & --- & --- & --- \\
+					3 & x & x & x & --- & --- \\
+					2 & x & x & x & x & --- \\
+					1 & A & B & B & A & A \\
+					\hline
+					-- & a & b & b & a & a \\
+					\hline
+				\end{tabular}
+			\end{center}
+		}
+
+	\item Give a parse tree for the word abba with respect to the grammar above (for part $c)$)
+
+		\answer{%
+			---
+		}
+
+	\item What is $FIRST(SS)$ with respect to the grammar above (for part $c)$)
+
+		\answer{%
+			---
+		}
+
+\end{enumerate}		
+
+
+\question{2. Consider the following two context-free grammars}
+
+\begin{enumerate}		
+
+	\item Draw two different parse trees for the word cacbc and the grammar $G1$
+
+
+		\answer{%
+			---
+		}
+
+	\item Give the $LOOKAHEAD$ set for every rule of grammar $G2$
+
+
+		\answer{%
+			---
+		}
+
+	\item Is the grammar $G2$ $LL(1)$?
+
+
+		\answer{%
+			---
+		}
+
+	\item Give the set of nullable nonterminals for the grammar $G2$
+
+		\answer{%
+			---
+		}
+
+	\item Give the context-free grammar that you obtain from replacing all $ε$-rules in grammar $G2$
+
+
+		\answer{%
+			---
+		}
+
+\end{enumerate}		
+
+
+\topic{Turing Machines}
+
+\question{Consider the following Turing machine with input alphabet \{$a$, $b$\} and tape alphabet \{$a$, $b$, $\_$\}}
+
+\begin{enumerate}		
+
+	\item Give computations for the words ab and bb. State for each word whether the
+		machine accepts it, rejects it or loops. If the machine loops, then give the first
+		five configurations of the computation.
+
+		\answer{%
+			---
+		}
+
+	\item Draw a Turing machine that decides the language of all words over the alphabet \{$a$, $b$\} that have an odd number of a’s and an odd number of b’s.
+
+		\answer{%
+			---
+		}
+
+\end{enumerate}		
 
 \pagebreak
 
-\section*{References}
+% \section*{References}
 
-\begin{flushleft}
-	\begin{itemize}[noitemsep]
-		\item \url{https://en.wikipedia.org/wiki/Conjunctive_normal_form}
-		\item \url{https://en.wikipedia.org/wiki/De_Morgan\%27s_laws}
-		\item \url{https://en.wikipedia.org/wiki/Distributive_property}
-		\item \url{https://en.wikipedia.org/wiki/Exclusive_or}
-		\item \url{https://en.wikipedia.org/wiki/Finite-state_machine}
-		\item \url{https://en.wikipedia.org/wiki/Modus_ponens}
-		\item \url{https://en.wikipedia.org/wiki/Uniqueness_quantification}
-		\item \url{https://math.stackexchange.com/questions/228285/how-can-i-get-the-negation-of-exists-unique-existential-quantification}
-		\item \url{https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}
-		\item \url{https://en.wikipedia.org/wiki/Negation}
-		\item Logic in Computer Science, Huth \& Ryan, 2004
-	\end{itemize}		
-\end{flushleft}
+% \begin{flushleft}
+% \begin{itemize}[noitemsep]
+% \end{itemize}		
+% \end{flushleft}
 
 \end{document}
 %% vim: foldmethod=marker conceallevel=0:
