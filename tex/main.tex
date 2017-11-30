@@ -1,0 +1,93 @@
+\documentclass[a4paper, 14pt]{report}
+
+%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}  % math
+\usepackage{graphicx} % embedding images
+\usepackage{enumitem} % lists
+\usepackage{hyperref} % urls
+\usepackage{logicproof} % fitch style proofs
+
+\usepackage{geometry} % margins
+\geometry{margin=0.9in} % make the margin smaller
+
+\graphicspath{{../img/}{./img/}}
+
+%% END OF PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{%
+	Norbert Logiewa \\
+	\small{nl253}}
+
+\date{December 2017}
+
+\title{%
+	Assessment 2 \\
+	\Huge{%
+		Context Free Grammars \\
+		and \\
+		Turing Machines}}
+
+% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\topic}[1]{%
+	\pagebreak
+	\section*{%
+		\begin{center} \huge{#1} \end{center}}}
+
+\newcommand{\centeredimg}[1]{%
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[height=7cm]{#1}
+		\end{center}
+	\end{figure}} 
+
+\newcommand{\answer}[1]{%
+	\begin{flushleft}
+		\textbf{Answer}:\\
+		#1
+	\end{flushleft}}
+
+\newcommand{\question}[1]{\subsection*{#1}}
+\newcommand{\task}[1]{%
+	\begin{flushleft}
+		\textbf{Task:}\\ 
+		#1
+	\end{flushleft}}
+
+% END OF MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\topic{Context Free Grammars}
+
+\question{}
+
+\answer{%
+	---
+}
+
+\pagebreak
+
+\section*{References}
+
+\begin{flushleft}
+	\begin{itemize}[noitemsep]
+		\item \url{https://en.wikipedia.org/wiki/Conjunctive_normal_form}
+		\item \url{https://en.wikipedia.org/wiki/De_Morgan\%27s_laws}
+		\item \url{https://en.wikipedia.org/wiki/Distributive_property}
+		\item \url{https://en.wikipedia.org/wiki/Exclusive_or}
+		\item \url{https://en.wikipedia.org/wiki/Finite-state_machine}
+		\item \url{https://en.wikipedia.org/wiki/Modus_ponens}
+		\item \url{https://en.wikipedia.org/wiki/Uniqueness_quantification}
+		\item \url{https://math.stackexchange.com/questions/228285/how-can-i-get-the-negation-of-exists-unique-existential-quantification}
+		\item \url{https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}
+		\item \url{https://en.wikipedia.org/wiki/Negation}
+		\item Logic in Computer Science, Huth \& Ryan, 2004
+	\end{itemize}		
+\end{flushleft}
+
+\end{document}
+%% vim: foldmethod=marker conceallevel=0:
