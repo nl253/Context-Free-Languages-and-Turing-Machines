@@ -5,6 +5,7 @@
 \usepackage{amsmath}  % math
 \usepackage{graphicx} % embedding images
 \usepackage{enumitem} % lists
+\usepackage{multicol} % columns
 \usepackage{hyperref} % urls
 \usepackage{logicproof} % fitch style proofs
 
@@ -43,12 +44,11 @@
 	\end{figure}} 
 
 \newcommand{\answer}[1]{%
-	\begin{flushleft}
-		\textbf{Answer}:\\
-		#1
-	\end{flushleft}}
+	\textbf{Answer}:\\
+	#1}
 
 \newcommand{\question}[1]{\subsection*{#1}}
+
 \newcommand{\task}[1]{%
 	\begin{flushleft}
 		\textbf{Task:}\\ 
@@ -65,41 +65,63 @@
 
 \question{1. Consider the language}
 
-\begin{enumerate}		
+\begin{enumerate}[label=(\alph*)]
+
+		\setlength\itemsep{2em}
 
 	\item Give a word that is in the language and a word that is not in the language
 
 		\answer{%
-			not in the language: kkk \\
-			in the language: 		 aabbbbcc
+			a word not in the language: kkk \\
+			a word in the language: 		 aabbbbcc
 		}
 
 	\item Give a context-free grammar for the language above.
 
 		\answer{%
-			---
+			$S \rightarrow B\ |\ a S c$ \\
+			$B \rightarrow \epsilon\ |\ b B c$ \\
 		}
 
-	\item Use the Cocke-Younger-Kasami algorithm to determine whether abbaa is a word
+	\item Use the Cocke-Younger-Kasami algorithm to determine whether \textbf{abbaa} is a word
 		of the language of the following grammar. Give the table. State in one sentence
 		whether the word is a word of the language of the grammar and how you obtain
 		this conclusion from the table.
 
+		\[ S \Rightarrow AX\ |\ BY\ |\ SS\ |\ BA \]
+		\[ X \Rightarrow AS \]
+		\[ Y \Rightarrow BS \]
+		\[ A \Rightarrow a \]
+		\[ B \Rightarrow b \]
+
 		\answer{%
+
+			% 1. Convert into Chomsky Normal Form
+
+			% \[ S \rightarrow K\ |\ Z \]
+			% \[ K \rightarrow J\ |\ B  \]
+			% \[ J \rightarrow aR \]
+			% \[ R \rightarrow Sc \]
+			% \[ B \rightarrow bN \]
+			% \[ N \rightarrow Bc \]
+
 
 			\begin{center}
 				\begin{tabular}{ |l|c|c|c|c|c| } 
 					\hline
-					5 & x & --- & --- & --- & --- \\
-					4 & x & x & --- & --- & --- \\
-					3 & x & x & x & --- & --- \\
-					2 & x & x & x & x & --- \\
+					5 & -- & --- & --- & --- & --- \\
+					4 & -- & -- & --- & --- & --- \\
+					3 & -- & Y & -- & --- & --- \\
+					2 & -- & -- & S & -- & --- \\
 					1 & A & B & B & A & A \\
 					\hline
 					-- & a & b & b & a & a \\
 					\hline
 				\end{tabular}
 			\end{center}
+
+			\textbf{Conclusion}: \\
+			It's not, there is no way to parse it as $S$ doesn't appear in the top row.
 		}
 
 	\item Give a parse tree for the word abba with respect to the grammar above (for part $c)$)
@@ -110,19 +132,35 @@
 
 	\item What is $FIRST(SS)$ with respect to the grammar above (for part $c)$)
 
-		\answer{%
-			---
-		}
+		\answer{$FIRST(SS)$ = \{$a$, $b$\}}
 
 \end{enumerate}		
 
 
+\pagebreak
+
 \question{2. Consider the following two context-free grammars}
 
-\begin{enumerate}		
+\begin{multicols}{2}
+
+	\begin{center} \textbf{\\G2} \end{center}
+
+	\[ S \Rightarrow DAd \]
+	\[ A \Rightarrow aS\ |\ \epsilon \]
+	\[ B \Rightarrow bD\ |\ \epsilon \]
+	\[ D \Rightarrow cB \]
+
+	\begin{center} \textbf{\\\\G1} \end{center}
+
+	\[ S \Rightarrow SaS\ |\ SbS\ |\ c \] \\
+
+\end{multicols}
+
+\begin{enumerate}[label=(\alph*)]
+
+		\setlength\itemsep{2em}
 
 	\item Draw two different parse trees for the word cacbc and the grammar $G1$
-
 
 		\answer{%
 			---
@@ -130,29 +168,44 @@
 
 	\item Give the $LOOKAHEAD$ set for every rule of grammar $G2$
 
+		% Definition: LOOKAHEAD(X -> α) and LOOKAHEAD(X):
+
+		% LOOKAHEAD(X -> α) = FIRST(α) U FOLLOW(X), if NULLABLE(α)
+		% LOOKAHEAD(X -> α) = FIRST(α), if not NULLABLE(α)
+		% LOOKAHEAD(X) = LOOKAHEAD(X -> α) U LOOKAHEAD(X -> β) U LOOKAHEAD(X -> γ)
 
 		\answer{%
-			---
+			\\
+			\begin{tabular}{ |c|c|c|c| } 
+				\hline
+				rule & nullable & first set & lookahead set \\
+				\hline
+				\[ S \Rightarrow DAd \] & 0 & $\{c\}$ & $\{\}$ \\
+				\hline
+				\[ A \Rightarrow aS\ |\ \epsilon \] & 1  & $\{a, \epsilon\}$ & $\{\}$ \\
+				\hline
+				\[ B \Rightarrow bD\ |\ \epsilon \] & 1 & $\{b, \epsilon\}$ & $\{\}$ \\
+				\hline
+				\[ D \Rightarrow cB \] & 0  & $\{c\}$ & $\{\}$ \\
+				\hline
+			\end{tabular}
 		}
 
 	\item Is the grammar $G2$ $LL(1)$?
 
-
-		\answer{%
-			---
-		}
+		\answer{No it's not. It's ambiguous.}
 
 	\item Give the set of nullable nonterminals for the grammar $G2$
 
-		\answer{%
-			---
-		}
+		\answer{$\{A, B\}$}
 
-	\item Give the context-free grammar that you obtain from replacing all $ε$-rules in grammar $G2$
-
+	\item Give the context-free grammar that you obtain from replacing all $\epsilon$-rules in grammar $G2$
 
 		\answer{%
-			---
+			\[ S \Rightarrow DAd \]
+			\[ A \Rightarrow aS \]
+			\[ B \Rightarrow bD \]
+			\[ D \Rightarrow cB \]
 		}
 
 \end{enumerate}		
@@ -160,9 +213,12 @@
 
 \topic{Turing Machines}
 
-\question{Consider the following Turing machine with input alphabet \{$a$, $b$\} and tape alphabet \{$a$, $b$, $\_$\}}
+\question{Consider the following Turing machine with input alphabet \{$a$, $b$\} and tape alphabet $\{a, b, \_\}$}
 
-\begin{enumerate}		
+
+\begin{enumerate}[label=(\alph*)]
+
+		\setlength\itemsep{2em}
 
 	\item Give computations for the words ab and bb. State for each word whether the
 		machine accepts it, rejects it or loops. If the machine loops, then give the first
