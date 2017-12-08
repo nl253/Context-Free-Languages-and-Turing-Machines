@@ -358,3 +358,5 @@ Downloads
 .local/share/composer
 .dmrc
 .dmenurc
+slides/
+tex/main.fdb_latexmk

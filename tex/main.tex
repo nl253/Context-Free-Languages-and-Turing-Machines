@@ -69,7 +69,7 @@
 
 		\setlength\itemsep{2em}
 
-	\item Give a word that is in the language and a word that is not in the language
+	\item Give a word that is in the language $\{a^i b^k c^m \ |\ i \geq 0, k \geq 0, m \geq 0, k = i + m \}$ and a word that is not in the language
 
 		\answer{%
 			a word not in the language: kkk \\
@@ -143,14 +143,14 @@
 
 \begin{multicols}{2}
 
-	\begin{center} \textbf{\\G2} \end{center}
+	\begin{center} \textbf{\\G_{2}} \end{center}
 
 	\[ S \Rightarrow DAd \]
 	\[ A \Rightarrow aS\ |\ \epsilon \]
 	\[ B \Rightarrow bD\ |\ \epsilon \]
 	\[ D \Rightarrow cB \]
 
-	\begin{center} \textbf{\\\\G1} \end{center}
+	\begin{center} \textbf{\\\\G_{1}} \end{center}
 
 	\[ S \Rightarrow SaS\ |\ SbS\ |\ c \] \\
 
@@ -160,13 +160,13 @@
 
 		\setlength\itemsep{2em}
 
-	\item Draw two different parse trees for the word cacbc and the grammar $G1$
+	\item Draw two different parse trees for the word cacbc and the grammar $G_{1}$
 
 		\answer{%
 			---
 		}
 
-	\item Give the $LOOKAHEAD$ set for every rule of grammar $G2$
+	\item Give the $LOOKAHEAD$ set for every rule of grammar $G_{2}$
 
 		% Definition: LOOKAHEAD(X -> α) and LOOKAHEAD(X):
 
@@ -191,22 +191,49 @@
 			\end{tabular}
 		}
 
-	\item Is the grammar $G2$ $LL(1)$?
+	\item Is the grammar $G_{2}$ $LL(1)$?
 
 		\answer{No it's not. It's ambiguous.}
 
-	\item Give the set of nullable nonterminals for the grammar $G2$
+	\item Give the set of nullable non-terminals for the grammar $G_{2}$
 
-		\answer{$\{A, B\}$}
+		% $A$ and $B$ produce \epsilon directly so are added to the
+		% set, the others produce \epsilon indirectly ie give rise
+		% to $A$ or $B$ or something that gives rise to $A$ or $B$.
 
-	\item Give the context-free grammar that you obtain from replacing all $\epsilon$-rules in grammar $G2$
+		\answer{$\{A, B, D, S\}$}
+
+	\item Give the context-free grammar that you obtain from replacing all $\epsilon$-rules in grammar $G_{2}$
 
 		\answer{%
-			\[ S \Rightarrow DAd \]
-			\[ A \Rightarrow aS \]
-			\[ B \Rightarrow bD \]
-			\[ D \Rightarrow cB \]
+
+			\begin{multicols}{2}
+
+				\begin{center} 
+
+					\textbf{G_{2}} 
+
+					\[ S \Rightarrow DAd \]
+					\[ A \Rightarrow aS\ |\ \epsilon \]
+					\[ B \Rightarrow bD\ |\ \epsilon \]
+					\[ D \Rightarrow cB \]
+
+				\end{center}
+
+				\begin{center} 
+
+					\textbf{after replacing $\epsilon$ rules} 
+
+					\[ S \Rightarrow DAd\ |\ Dd\ |\ Ad\ |\ d \]
+					\[ A \Rightarrow aS\ |\ a  \]
+					\[ B \Rightarrow bD\ |\ b \]
+					\[ D \Rightarrow cB\ |\ c \]
+
+				\end{center}
+
+			\end{multicols}
 		}
+
 
 \end{enumerate}		
 
