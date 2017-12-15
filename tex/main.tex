@@ -78,8 +78,9 @@ Turing Machines}}
 \item Give a context-free grammar for the language above.
 
 	\answer{%
-		$S \rightarrow B\ |\ a S c$ \\
-		$B \rightarrow \epsilon\ |\ b B c$ \\
+		$S \Rightarrow A\ |\ B\ |\ \epsilon$ \\
+		$B \Rightarrow b S c$ \\
+		$A \Rightarrow a S b$ \\
 	}
 
 \item Use the CYK algorithm to determine whether \textbf{abbaa} is a word
@@ -159,13 +160,13 @@ Turing Machines}}
 			\hline
 			rule $R \Rightarrow t$ & $NULLABLE(R)$ & $FIRST(t)$ & $FOLLOW(R)$ & $LOOKAHEAD(R)$ \\
 			\hline
-			\[ S \Rightarrow DAd \] & $false$ & $\{c\}$ & $\{d\}$ & $\{c\} $ \\
+			\[ S \Rightarrow DAd \] & $false$ & $\{c\}$ & not necessary & $\{c\} $ \\
 			\hline
 			\[ A \Rightarrow aS\ |\ \epsilon \] & $true$  & $\{a, \epsilon\}$ & $\{d\}$ & $\{a, d, \epsilon\}$  \\
 			\hline 
-			\[ B \Rightarrow bD\ |\ \epsilon \] & $true$ & $\{b, \epsilon\}$ & $\{a\}$ & $\{a, b, \epsilon\}$ \\ 
+			\[ B \Rightarrow bD\ |\ \epsilon \] & $true$ & $\{b, \epsilon\}$ & $\{a, d\}$ & $\{a, b, d, \epsilon\}$ \\ 
 			\hline
-			\[ D \Rightarrow cB \] &$false$ & $\{c\}$ & $\{a\}$ & $\{c\}$ \\
+			\[ D \Rightarrow cB \] &$false$ & $\{c\}$ & not necessary & $\{c\}$ \\
 			\hline
 	\end{tabular}}
 
@@ -175,7 +176,7 @@ Turing Machines}}
 
 \item Give the set of nullable non-terminals for the grammar $G_{2}$
 
-	\answer{$\{A, B, D, S\}$}
+	\answer{$\{A, B\}$}
 
 \item Give the context-free grammar that you obtain from replacing all $\epsilon$-rules in grammar $G_{2}$
 
@@ -226,9 +227,9 @@ Turing Machines}}
 				\hline
 				input word & computation & outcome \\
 				\hline
-				ab & $a/a/R$ \hspace{0.1cm} \vdash \hspace{0.2cm} $b/b/R$ \hspace{0.2cm} \vdash \hspace{0.2cm} $\_/\_/R$ \hspace{0.2cm} \vdash \hspace{0.2cm} $\_/\_/R$ & reject \\
+				ab & $1ab$ \hspace{0.1cm} \vdash \hspace{0.2cm} $a2b$ \hspace{0.2cm} \vdash \hspace{0.2cm} $ab1\_$ \hspace{0.2cm} \vdash \hspace{0.2cm} $ab\_2\_$ \hspace{0.2cm} \vdash \hspace{0.2cm} $ab\_\_3\_$ & reject \\
 				\hline
-				bb & $b/b/R$ \hspace{0.2cm} \vdash \hspace{0.2cm} $a/a/R$ \hspace{0.2cm} \vdash \hspace{0.2cm} $b/b/R$ \hspace{0.2cm} \vdash \hspace{0.2cm} $b/b/R$ \hspace{0.2cm} \vdash \hspace{0.2cm} $b/b/R$ & loop \\
+				bb & $1bb$ \hspace{0.1cm} \vdash \hspace{0.2cm} $4\_ab$ \hspace{0.2cm} \vdash \hspace{0.2cm} $\_5ab$ \hspace{0.2cm} \vdash \hspace{0.2cm} $4\_bb$ \hspace{0.2cm} \vdash \hspace{0.2cm} $\_5bb$ \hspace{0.2cm} \vdash \hspace{0.2cm} $2\_ab$ \hspace{0.2cm} \vdash \hspace{0.2cm} $\_3ab$ & reject \\
 				\hline
 			\end{tabular}
 	\end{center}}
@@ -237,7 +238,7 @@ Turing Machines}}
 	over the alphabet \{$a$, $b$\} that have an odd number of $a$s and
 	an odd number of $b$s.
 
-	\answer{}
+	\answer{\centeredimg{turing_machine.jpg}}
 
 \end{enumerate}		
 
